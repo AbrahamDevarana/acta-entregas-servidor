@@ -14,4 +14,12 @@ class Galeria extends Model
         'idEvidencia',
         'estatusEvidencia',
     ];
+
+    public function fotos(){
+        return $this->hasMany(Fotos::class);
+    }
+
+    public function evidencia(){
+        return $this->belongsTo(Evidencia::class);
+    }
 }

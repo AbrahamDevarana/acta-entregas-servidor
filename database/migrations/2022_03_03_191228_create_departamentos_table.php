@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('piso');
             $table->date('fechaEntrega');
             $table->date('fechaEntregado');
-            $table->foreignId('idCliente')->constrained();
-            $table->foreignId('idTipoDpto')->constrained();
+            $table->foreignId('id_cliente')->constrained();
+            $table->foreignId('id_tipoDpto')->constrained();
             $table->boolean('eliminado')->default(0);
             $table->timestamps();
         });

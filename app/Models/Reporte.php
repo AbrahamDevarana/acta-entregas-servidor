@@ -14,4 +14,11 @@ class Reporte extends Model
         'tipoEvidencia',
         'idUser',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function evidencia(){
+        return $this->hasMany(Evidencia::class);
+    }
 }

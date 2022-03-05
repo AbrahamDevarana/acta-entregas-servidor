@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('listado_seccion', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idListado')->constrained();
-            $table->foreignId('idSeccion')->constrained();
+            $table->foreignId('id_listado')->constrained();
+            $table->foreignId('id_seccion')->constrained();
             $table->timestamps();
         });
     }

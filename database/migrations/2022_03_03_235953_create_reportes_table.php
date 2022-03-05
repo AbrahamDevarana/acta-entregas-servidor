@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('url');
             $table->string('tipoEvidencia');
-            $table->foreignId('idUser')->constrained();
+            $table->foreignId('id_user')->constrained();
             $table->timestamps();
         });
     }

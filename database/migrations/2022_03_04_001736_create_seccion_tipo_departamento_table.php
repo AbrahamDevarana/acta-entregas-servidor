@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('seccion_tipo_departamento', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idtipoDepartamento')->constrained();
-            $table->foreignId('idSeccion')->constrained();
+            $table->foreignId('id_tipo_departamento')->constrained();
+            $table->foreignId('id_seccion')->constrained();
             $table->timestamps();
         });
     }

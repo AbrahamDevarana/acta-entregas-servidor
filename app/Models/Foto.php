@@ -10,4 +10,8 @@ class Foto extends Model
     use HasFactory;
 
     protected $fillable = [ 'url' ];
+
+    public function galeria(){
+        return $this->belongsTo(Galeria::class);
+    }
 }

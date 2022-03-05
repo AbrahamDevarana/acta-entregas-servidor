@@ -10,9 +10,24 @@ class Evidencia extends Model
     use HasFactory;
 
     protected $fillable = [
-    'idDptoListado',
-    'idEvidencia',
+    'id_departamento_listado',
+    'id_evidencia',
     'comentarios',
-    'idStatus',
+    'id_status',
     ];
+
+
+    public function listado(){
+        return '';
+    }
+
+    public function reporte(){
+        return $this->belongsTo(Reporte::class);
+    }
+
+    public function galeria(){
+        return $this->hasOne(Galeria::class);
+    }
+
+
 }

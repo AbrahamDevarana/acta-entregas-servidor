@@ -11,7 +11,7 @@ class ListadoController extends Controller
 
     public function index()
     {
-        $listado = Listado::all();
+        $listado = Listado::where('eliminado', 0)->get();
         return response()->json([
             'listado' => $listado
         ]);
@@ -20,7 +20,16 @@ class ListadoController extends Controller
     public function store(StoreListadoRequest $request)
     {
         $request->validated();
-        $listado = Listado::create($request);
+        $listado = Listado::create([
+            "descripcion" => $request["descripcion"],
+            "tipoListado" => $request["tipoListado"]
+        ]);
+        return response()->json([
+            'listado' => $listado
+        ]);
+    }
+
+    public function edit(Listado $listado){
         return response()->json([
             'listado' => $listado
         ]);

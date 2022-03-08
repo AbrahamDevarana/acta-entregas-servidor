@@ -15,7 +15,7 @@ class SeccionController extends Controller
      */
     public function index()
     {
-        $seccion = Seccion::all();
+        $seccion = Seccion::where('eliminado', 0)->get();
         return response()->json([
             'seccion' => $seccion
         ]);
@@ -24,7 +24,16 @@ class SeccionController extends Controller
     public function store(StoreSeccionRequest $request)
     {
         $request->validated();
-        $seccion = Seccion::create($request);
+        $seccion = Seccion::create([
+            "descripcion" => $request["descripcion"]
+        ]);
+
+        return response()->json([
+            'seccion' => $seccion
+        ]);
+    }
+
+    public function edit(Seccion $seccion){
         return response()->json([
             'seccion' => $seccion
         ]);

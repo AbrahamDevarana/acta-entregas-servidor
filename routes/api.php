@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FotoController;
+use App\Http\Controllers\ListadoController;
+use App\Http\Controllers\SeccionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,12 +22,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::resource('listado', ListadoController::class)->only([
+    'index', 'store', 'update', 'destroy', 'edit'
+]);
+Route::resource('seccion', SeccionController::class)->only([
+    'index', 'store', 'update', 'destroy', 'edit'
+]);
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 
 
-Route::post('testfoto', [FotoController::class, 'store']);
+
 Route::middleware(['auth:sanctum', 'cors'])->group(function () {
 
 

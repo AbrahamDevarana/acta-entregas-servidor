@@ -14,4 +14,8 @@ class TipoDepartamento extends Model
     public function departamentos(){
         $this->hasMany(Departamento::class);
     }
+
+    public function secciones(){
+        return $this->belongsToMany(Seccion::class, 'seccion_tipo_departamento', 'tipo_departamento_id', 'seccion_id')->withTimestamps();
+    }
 }

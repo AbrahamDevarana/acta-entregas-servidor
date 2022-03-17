@@ -15,8 +15,8 @@ class Departamento extends Model
         'piso',
         'fechaEntrega',
         'fechaEntregado',
-        'id_cliente',
-        'id_tipoDpto'
+        'cliente_id',
+        'tipo_departamento_id'
     ];
 
     public function user(){
@@ -28,11 +28,11 @@ class Departamento extends Model
     }
 
     public function secciones(){
-        return $this->belongsToMany(Seccion::class, 'departamento_seccion', 'id_departamento', 'id_seccion');
+        return $this->belongsToMany(Seccion::class, 'departamento_seccion', 'departamento_id', 'seccion_id')->withTimestamps();
     }
 
     public function listado(){
-        return $this->belongsToMany(Listado::class, 'departamento_listado', 'id_departamento', 'id_listado');
+        return $this->belongsToMany(Listado::class, 'departamento_listado', 'departamento_id', 'listado_id')->withTimestamps();
     }
 
 }

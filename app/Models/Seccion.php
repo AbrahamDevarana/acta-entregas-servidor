@@ -13,10 +13,10 @@ class Seccion extends Model
 
 
     public function departamento(){
-        return $this->belongsToMany(Departamento::class, 'departamento_seccion', 'id_seccion', 'id_departamento');
+        return $this->belongsToMany(Departamento::class, 'departamento_seccion', 'seccion_id', 'departamento_id')->withTimestamps();
     }
 
     public function listado(){
-        return $this->belongsToMany(Listado::class, 'listado_seccion','id_seccion','id_listado');
+        return $this->belongsToMany(Listado::class, 'listado_seccion', 'seccion_id', 'listado_id')->withTimestamps();
     }
 }

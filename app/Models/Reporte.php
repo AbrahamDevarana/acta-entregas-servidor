@@ -12,7 +12,7 @@ class Reporte extends Model
     protected $fillable = [
         'url',
         'tipoEvidencia',
-        'idUser',
+        'user_id',
     ];
 
     public function user(){

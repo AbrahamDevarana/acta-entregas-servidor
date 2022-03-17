@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reportes', function (Blueprint $table) {
+        Schema::create('agendas', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
-            $table->string('tipoEvidencia');
-            $table->foreignId('user_id')->constrained();
+            $table->string("descripcion");
+            $table->integer("tipo_agenda");
+            $table->dateTime("fecha");
+            $table->foreignId("departamento_id")->constrained();
+            $table->string('eliminado')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reportes');
+        Schema::dropIfExists('agendas');
     }
 };

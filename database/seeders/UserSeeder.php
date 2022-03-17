@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Abraham',
             'email' => 'abrahamalvarado@devarana.mx',
+            'last_name' => 'Alvarado',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('abraham'),
             'created_at' => Carbon::now(),
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
             'name' => 'Test',
             'email' => 'test@devarana.mx',
             'email_verified_at' => Carbon::now(),
+            'last_name' => 'Pruebas',
             'password' => Hash::make('test'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

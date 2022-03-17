@@ -15,13 +15,15 @@ return new class extends Migration
     {
         Schema::create('departamentos', function (Blueprint $table) {
             $table->id();
-            $table->integer('numero');
-            $table->integer('folio');
-            $table->integer('piso');
-            $table->date('fechaEntrega');
-            $table->date('fechaEntregado');
-            $table->foreignId('id_cliente')->constrained();
-            $table->foreignId('id_tipoDpto')->constrained();
+            $table->string('numero')->nullable();
+            $table->string('folio')->nullable();
+            $table->integer('piso')->nullable();
+            $table->date('fechaEntrega')->nullable();
+            $table->date('fechaEntregado')->nullable();
+            $table->date('fechaPreEntrega')->nullable();
+            $table->foreignId('cliente_id')->default(0)->constrained();
+            $table->foreignId('tipo_departamento_id')->default(0)->constrained();
+            $table->foreignId('status_id')->default(0);
             $table->boolean('eliminado')->default(0);
             $table->timestamps();
         });

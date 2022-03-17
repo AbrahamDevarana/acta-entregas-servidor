@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
            UserSeeder::class,
            TipoDepartamentoSeeder::class,
            ListadoSeeder::class,
-           SeccionSeeder::class
+           SeccionSeeder::class,
+           DepartamentoSeeder::class
        ]);
     }
 }

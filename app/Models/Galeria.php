@@ -10,8 +10,8 @@ class Galeria extends Model
     use HasFactory;
 
     protected $fillable = [
-        'idFoto',
-        'idEvidencia',
+        'foto_id',
+        'evidencia_id',
         'estatusEvidencia',
     ];
 

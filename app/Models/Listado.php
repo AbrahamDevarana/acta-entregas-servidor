@@ -15,10 +15,10 @@ class Listado extends Model
     ];
 
     public function departamentos(){
-        return $this->belongsToMany(Departamento::class, 'departamento_listado', 'id_listado', 'id_departamento');
+        return $this->belongsToMany(Departamento::class, 'departamento_listado', 'listado_id', 'departamento_id');
     }
 
     public function seccion(){
-        return $this->belongsToMany(Seccion::class, 'listado_seccion', 'id_listado', 'id_seccion');
+        return $this->belongsToMany(Seccion::class, 'listado_seccion', 'listado_id', 'seccion_id');
     }
 }

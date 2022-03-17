@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('evidencias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_departamento_listado')->constrained();
-            $table->foreignId('id_evidencia')->constrained();
+            $table->foreignId('departamento_listado_id')->constrained();
+            $table->foreignId('evidencia_id')->constrained();
             $table->text('comentarios');
-            $table->integer('id_status');
+            $table->integer('status_id');
 
             $table->timestamps();
         });

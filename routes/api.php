@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\ListadoController;
 use App\Http\Controllers\SeccionController;
+use App\Http\Controllers\UserController;
+use App\Models\Departamento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +32,20 @@ Route::resource('listado', ListadoController::class)->only([
 Route::resource('seccion', SeccionController::class)->only([
     'index', 'store', 'update', 'destroy', 'edit'
 ]);
+
+Route::resource('usuarios', UserController::class)->only([
+    'index', 'store', 'update', 'destroy', 'edit'
+]);
+
+Route::resource('departamento', DepartamentoController::class)->only([
+    'index', 'update', 'destroy', 'edit'
+]);
+
+Route::resource('agenda', AgendaController::class)->only([
+    'index', 'store', 'update', 'destroy', 'edit'
+]);
+
+Route::get('/departamento-seccion/{id}', [DepartamentoController::class, 'obtenerSecciones']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);

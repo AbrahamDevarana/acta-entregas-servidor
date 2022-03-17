@@ -14,23 +14,43 @@ class ListadoSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        Listado::create([
-            "descripcion" => "Piso porcelánico rectificado",
-            "tipoListado" => 1
-        ]);
-        Listado::create([
-            "descripcion" => "Ventanería premium en aluminio obscuro",
-            "tipoListado" => 1
-        ]);
-        Listado::create([
-            "descripcion" => "Acabado de granito en cocina",
-            "tipoListado" => 1
-        ]);
-        Listado::create([
-            "descripcion" => "Monomando tipo extraíble en cocina",
-            "tipoListado" => 1
-        ]);
+    {       
+        $lista = [
+        "Puerta de acceso",
+        "Cristal medio muro",
+        "Luminarias y spots",
+        "Apagadores y contactos",
+        "Acabado en muros y plafones ",
+        "Vanity",
+        "Closet de blancos",
+        "Ovalin",
+        "Monomandos",
+        "Espejo",
+        "Ventana de proyección",
+        "Cancel esmerilado regadera",
+        "Cancel esmerilado wc",
+        "Wc",
+        "Accesorios de baños",
+        "Regadera",
+        "Closets",
+        "Piso",
+        "Piso decorativo",
+        "Puerta intercomunicación",
+        "Cancel",
+        "Barandal",
+        "Puerta nicho de calentador",
+        "Calentador",
+        "Lavamanos",
+        "Mezcladora",
+        "Lavadero"];
+        
+        foreach ($lista as $value) {
+            Listado::create([
+                "descripcion" => $value,
+                "tipoListado" => 1
+            ]);
+        }
+
 
     }
 }

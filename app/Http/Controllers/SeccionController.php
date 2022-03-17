@@ -14,8 +14,9 @@ class SeccionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $seccion = Seccion::where('eliminado', 0)->get();
+    {       
+         $seccion = Seccion::with('listado')->where('eliminado', 0)->get();
+
         return response()->json([
             'seccion' => $seccion
         ]);
@@ -24,9 +25,10 @@ class SeccionController extends Controller
     public function store(StoreSeccionRequest $request)
     {
         $request->validated();
-        $seccion = Seccion::create([
-            "descripcion" => $request["descripcion"]
-        ]);
+        $seccion = new Seccion();
+        $seccion->descripcion = $request["descripcion"];
+        $seccion->save();
+        $seccion->listado()->sync($request["lista"]);
 
         return response()->json([
             'seccion' => $seccion
@@ -34,8 +36,11 @@ class SeccionController extends Controller
     }
 
     public function edit(Seccion $seccion){
+
+        $seccion = Seccion::with("listado:id")->findOrFail($seccion->id);
         return response()->json([
-            'seccion' => $seccion
+            'seccion' => $seccion,
+            // 'listado' => $listado
         ]);
     }
 
@@ -43,6 +48,7 @@ class SeccionController extends Controller
     {
         $request->validated();
         $seccion->descripcion = $request['descripcion'];
+        $seccion->listado()->sync($request["lista"]);
         $seccion->save();
         return response()->json([
             'seccion' => $seccion

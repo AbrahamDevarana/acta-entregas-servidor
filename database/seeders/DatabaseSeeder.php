@@ -16,10 +16,11 @@ class DatabaseSeeder extends Seeder
     {
        $this->call([
            UserSeeder::class,
-           TipoDepartamentoSeeder::class,
+           TipoViviendaSeeder::class,
            ListadoSeeder::class,
            SeccionSeeder::class,
-           DepartamentoSeeder::class
+           ViviendaSeeder::class,
+           DesarrollosSeeder::class
        ]);
     }
 }

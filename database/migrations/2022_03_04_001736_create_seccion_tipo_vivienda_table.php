@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('agendas', function (Blueprint $table) {
+        Schema::create('seccion_tipo_vivienda', function (Blueprint $table) {
             $table->id();
-            $table->string("descripcion");
-            $table->integer("tipo_agenda");
-            $table->dateTime("fecha");
-            $table->foreignId("vivienda_id")->constrained();
-            $table->string('eliminado')->default(0);
+            $table->foreignId('tipo_vivienda_id')->constrained();
+            $table->foreignId('seccion_id')->constrained();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agendas');
+        Schema::dropIfExists('seccion_tipo_vivienda');
     }
 };

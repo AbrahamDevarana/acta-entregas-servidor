@@ -10,7 +10,7 @@ class Evidencia extends Model
     use HasFactory;
 
     protected $fillable = [
-    'departamento_listado_id',
+    'vivienda_listado_id',
     'evidencia_id',
     'comentarios',
     'status_id',

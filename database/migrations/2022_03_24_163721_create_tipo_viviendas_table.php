@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('seccion_tipo_departamento', function (Blueprint $table) {
+        Schema::create('tipo_viviendas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tipo_departamento_id')->constrained();
-            $table->foreignId('seccion_id')->constrained();
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->integer('tipo')->default(1);  // 2 para Casa
+            $table->boolean('eliminado')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seccion_tipo_departamento');
+        Schema::dropIfExists('tipo_viviendas');
     }
 };

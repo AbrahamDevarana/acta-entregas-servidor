@@ -14,8 +14,8 @@ class Listado extends Model
         'tipoListado',
     ];
 
-    public function departamentos(){
-        return $this->belongsToMany(Departamento::class, 'departamento_listado', 'listado_id', 'departamento_id');
+    public function viviendas(){
+        return $this->belongsToMany(Departamento::class, 'vivienda_listado', 'listado_id', 'vivienda_id');
     }
 
     public function seccion(){

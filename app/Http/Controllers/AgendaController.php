@@ -15,7 +15,7 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        $agenda = Agenda::with('departamentos')->where('eliminado', 0)->get();
+        $agenda = Agenda::with('viviendas')->where('eliminado', 0)->get();
 
         return response()->json([
            'agenda' => $agenda
@@ -30,7 +30,7 @@ class AgendaController extends Controller
             'descripcion' => $request['descripcion'],
             'tipo_agenda' => $request['tipo_agenda'],
             'fecha' => $request['fecha'],
-            'departamento_id' => $request['departamento_id'],
+            'vivienda_id' => $request['vivienda_id'],
         ]);
 
         return response()->json([
@@ -52,7 +52,7 @@ class AgendaController extends Controller
         $agenda->descripcion = $request['descripcion'];
         $agenda->tipo_agenda = $request['tipo_agenda'];
         $agenda->fecha = $request['fecha'];
-        $agenda->departamento_id = $request['departamento_id'];
+        $agenda->vivienda_id = $request['vivienda_id'];
         $agenda->save();
 
         return response()->json([

@@ -12,8 +12,8 @@ class Seccion extends Model
     protected $fillable = [ 'descripcion' ];
 
 
-    public function departamento(){
-        return $this->belongsToMany(Departamento::class, 'departamento_seccion', 'seccion_id', 'departamento_id')->withTimestamps();
+    public function vivienda(){
+        return $this->belongsToMany(Departamento::class, 'vivienda_seccion', 'seccion_id', 'vivienda_id')->withTimestamps();
     }
 
     public function listado(){

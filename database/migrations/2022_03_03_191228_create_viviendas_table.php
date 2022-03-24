@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departamentos', function (Blueprint $table) {
+        Schema::create('viviendas', function (Blueprint $table) {
             $table->id();
             $table->string('numero')->nullable();
             $table->string('folio')->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('fechaEntregado')->nullable();
             $table->date('fechaPreEntrega')->nullable();
             $table->foreignId('cliente_id')->default(0)->constrained();
-            $table->foreignId('tipo_departamento_id')->default(0)->constrained();
+            $table->foreignId('tipo_vivienda_id')->default(0)->constrained();
             $table->foreignId('status_id')->default(0);
             $table->boolean('eliminado')->default(0);
             $table->timestamps();
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departamentos');
+        Schema::dropIfExists('viviendas');
     }
 };

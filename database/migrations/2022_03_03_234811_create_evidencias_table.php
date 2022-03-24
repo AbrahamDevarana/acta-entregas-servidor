@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('evidencias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('departamento_listado_id')->constrained();
+            $table->foreignId('vivienda_listado_id')->constrained();
             $table->foreignId('evidencia_id')->constrained();
             $table->text('comentarios');
             $table->integer('status_id');

@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Departamento;
+use App\Models\Vivienda;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class DepartamentoSeeder extends Seeder
+class ViviendaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,19 +18,19 @@ class DepartamentoSeeder extends Seeder
     {
 
         //Torre 1
-        $departamento = 7;
+        $vivienda = 7;
         $pisos = 11;
         $tipoDpto = 1;
 
         // Recorre los $pisos
         for ($i=1; $i <= $pisos; $i++) { 
-            // Del piso 9+ cambia la cantidad de departamentos a 5
+            // Del piso 9+ cambia la cantidad de viviendas a 5
             if($i > 9){
-                $departamento = 5;
+                $vivienda = 5;
             }
         
-            // Crea los departamentos por cada piso con sus departamentos
-            for ($j=1; $j <= $departamento; $j++) { 
+            // Crea los viviendas por cada piso con sus viviendas
+            for ($j=1; $j <= $vivienda; $j++) { 
                 if($i < 9){
                     switch ($j) {
                         case 5:
@@ -67,18 +67,18 @@ class DepartamentoSeeder extends Seeder
                         break;
                     }
                 }
-                $dpto = Departamento::create([
+                $dpto = Vivienda::create([
                    'piso' => $i,
                    'numero' => $i.'0'.$j,
                    'folio' => 'A-'.$i.'0'.$j,
-                   'tipo_departamento_id' => $tipoDpto
+                   'tipo_vivienda_id' => $tipoDpto
                 ]);            
                               
                 
                 switch ($tipoDpto) {
                     case 1:
                         $arr = [];
-                        $res = DB::table('seccion_tipo_departamento')->where('tipo_departamento_id', $tipoDpto)->select('seccion_id')->get();
+                        $res = DB::table('seccion_tipo_vivienda')->where('tipo_vivienda_id', $tipoDpto)->select('seccion_id')->get();
                         foreach ($res as $valor) {
                             array_push($arr, $valor->seccion_id);
                         }
@@ -86,7 +86,7 @@ class DepartamentoSeeder extends Seeder
                     break;
                     case 2:
                         $arr = [];
-                        $res = DB::table('seccion_tipo_departamento')->where('tipo_departamento_id', $tipoDpto)->select('seccion_id')->get();
+                        $res = DB::table('seccion_tipo_vivienda')->where('tipo_vivienda_id', $tipoDpto)->select('seccion_id')->get();
                         foreach ($res as $valor) {
                             array_push($arr, $valor->seccion_id);
                         }
@@ -94,7 +94,7 @@ class DepartamentoSeeder extends Seeder
                     break;
                     case 3:
                         $arr = [];
-                        $res = DB::table('seccion_tipo_departamento')->where('tipo_departamento_id', $tipoDpto)->select('seccion_id')->get();
+                        $res = DB::table('seccion_tipo_vivienda')->where('tipo_vivienda_id', $tipoDpto)->select('seccion_id')->get();
                         foreach ($res as $valor) {
                             array_push($arr, $valor->seccion_id);
                         }
@@ -102,7 +102,7 @@ class DepartamentoSeeder extends Seeder
                     break;
                     case 4:
                         $arr = [];
-                        $res = DB::table('seccion_tipo_departamento')->where('tipo_departamento_id', $tipoDpto)->select('seccion_id')->get();
+                        $res = DB::table('seccion_tipo_vivienda')->where('tipo_vivienda_id', $tipoDpto)->select('seccion_id')->get();
                         foreach ($res as $valor) {
                             array_push($arr, $valor->seccion_id);
                         }

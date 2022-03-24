@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_departamentos', function (Blueprint $table) {
+        Schema::create('vivienda_seccion', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('descripcion');
-            $table->boolean('eliminado')->default(0);
+            $table->foreignId('vivienda_id')->constrained();
+            $table->foreignId('seccion_id')->constrained();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_departamentos');
+        Schema::dropIfExists('vivienda_seccion');
     }
 };

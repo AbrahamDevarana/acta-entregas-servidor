@@ -6,6 +6,9 @@ use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -62,6 +65,14 @@ class UserController extends Controller
     public function destroy(User $usuario)
     {
 
+        $imagen = $usuario->foto;
+        
+
+        if(File::exists('storage/'. $imagen)){
+            //Elimina imagen del SERVIDOR
+            File::delete('storage/'. $imagen);
+        }
+        
         $usuario->delete();
 
         return response()->json([
@@ -72,6 +83,22 @@ class UserController extends Controller
     public function status(User $usuario){
         $usuario->status = !$usuario->status;
         $usuario->save();
+        return response()->json([
+            'usuario' => $usuario
+        ]);
+    }
+
+
+    public function fotoPerfil(User $usuario, Request $request){
+        if($request->hasFile('foto')){
+            $url = $request->file('foto')->store('profile', 'public');
+                //  Resize a la imagen
+            $imagen = Image::make(public_path("storage/{$url}"))->fit(300, 300);
+            $imagen->save();
+            $usuario->foto = $url;
+            $usuario->save();
+        }
+
         return response()->json([
             'usuario' => $usuario
         ]);

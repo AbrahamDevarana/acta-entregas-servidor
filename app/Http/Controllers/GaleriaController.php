@@ -54,7 +54,7 @@ class GaleriaController extends Controller
         return response()->json($response);
     }
 
-    public function getPicture( $file = "" ){
+    public function getPicture($file = "" ){
 
         if(File::exists('storage/'.$file)){
             return response()->file(public_path()."/storage/".$file);

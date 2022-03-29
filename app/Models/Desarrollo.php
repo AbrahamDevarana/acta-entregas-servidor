@@ -11,7 +11,7 @@ class Desarrollo extends Model
 
     protected $fillable = ["descripcion", "url"];
 
-    public function prototipos(){
-        return $this->hasMany(TipoVivienda::class, 'tipo');
+    public function etapas(){
+        return $this->hasMany(Etapa::class);
     }
 }

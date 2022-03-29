@@ -76,7 +76,7 @@ class UserController extends Controller
         $usuario->delete();
 
         return response()->json([
-            "msg" => "success"
+            'usuario' => $usuario
         ]);
     }
 
@@ -90,10 +90,12 @@ class UserController extends Controller
 
 
     public function fotoPerfil(User $usuario, Request $request){
+
         if($request->hasFile('foto')){
             $url = $request->file('foto')->store('profile', 'public');
                 //  Resize a la imagen
-            $imagen = Image::make(public_path("storage/{$url}"))->fit(300, 300);
+            $imagen = Image::make(public_path("storage/{$url}"))->resize(150, 200);
+            // $imagen = Image::make(public_path("storage/{$url}"));
             $imagen->save();
             $usuario->foto = $url;
             $usuario->save();
@@ -102,5 +104,19 @@ class UserController extends Controller
         return response()->json([
             'usuario' => $usuario
         ]);
+    }
+
+
+    public function verFoto(User $usuario){
+
+        $file = $usuario->foto;
+        if( $file !== null) {
+            if(File::exists('storage/'.$file)){
+                return response()->file(public_path()."/storage/".$file);
+            }
+        }
+
+        
+        return response()->file(public_path()."/img/notFound.png");
     }
 }

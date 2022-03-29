@@ -16,15 +16,15 @@ class Vivienda extends Model
         'fechaEntrega',
         'fechaEntregado',
         'cliente_id',
-        'tipo_vivienda_id'
+        'prototipo_id'
     ];
 
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function tipoVivienda(){
-        return $this->hasOne(TipoVivienda::class);
+    public function prototipo(){
+        return $this->hasOne(Prototipo::class);
     }
 
     public function secciones(){

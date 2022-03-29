@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('seccion_prototipo', function (Blueprint $table) {
+        Schema::create('etapas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('seccion_id')->constrained();
-            $table->foreignId('prototipo_id')->constrained();
+            $table->string('descripcion');
+            $table->foreignId('desarrollo_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seccion_prototipo');
+        Schema::dropIfExists('etapas');
     }
 };

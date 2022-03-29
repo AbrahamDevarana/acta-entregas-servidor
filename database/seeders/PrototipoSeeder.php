@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\TipoVivienda;
+use App\Models\Prototipo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TipoViviendaSeeder extends Seeder
+class PrototipoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,9 +18,10 @@ class TipoViviendaSeeder extends Seeder
         $arrDptos = ['Style', 'Elite', 'Style Plus', 'Luxury', 'Majestic', 'Unique'];
 
         foreach ($arrDptos as $dpto) {
-            $tipoDpto = TipoVivienda::create([
+            $tipoDpto = Prototipo::create([
                 "nombre" => $dpto,
-                'descripcion' => 'Tipo'
+                'descripcion' => 'Tipo',
+                "etapa_id" => 1
             ]);
 
             switch ($tipoDpto->id) {

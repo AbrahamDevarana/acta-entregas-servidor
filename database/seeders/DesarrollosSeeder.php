@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Desarrollos;
+use App\Models\Desarrollo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -18,8 +18,9 @@ class DesarrollosSeeder extends Seeder
         $arrDesarrollos = ["Royal View"];
 
         foreach ($arrDesarrollos as $desarrollo) {
-            Desarrollos::create([
-                "descripcion" => $desarrollo
+            Desarrollo::create([
+                "descripcion" => $desarrollo,
+                "url" => "notFound"
             ]);
         }
     }

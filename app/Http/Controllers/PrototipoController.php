@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TipoVivienda;
-use App\Http\Requests\StoreTipoViviendaRequest;
-use App\Http\Requests\UpdateTipoViviendaRequest;
+use App\Models\Prototipo;
+use App\Http\Requests\StorePrototipoRequest;
+use App\Http\Requests\UpdatePrototipoRequest;
 
-class TipoViviendaController extends Controller
+class PrototipoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,11 @@ class TipoViviendaController extends Controller
      */
     public function index()
     {
-        //
+        $prototipo = Prototipo::all();
+
+        return response()->json([
+            'prototipo' => $prototipo
+        ]);
     }
 
     /**
@@ -31,10 +35,10 @@ class TipoViviendaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTipoViviendaRequest  $request
+     * @param  \App\Http\Requests\StorePrototipoRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTipoViviendaRequest $request)
+    public function store(StorePrototipoRequest $request)
     {
         //
     }
@@ -42,10 +46,10 @@ class TipoViviendaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TipoVivienda  $tipoVivienda
+     * @param  \App\Models\Prototipo  $prototipo
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoVivienda $tipoVivienda)
+    public function show(Prototipo $prototipo)
     {
         //
     }
@@ -53,10 +57,10 @@ class TipoViviendaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TipoVivienda  $tipoVivienda
+     * @param  \App\Models\Prototipo  $prototipo
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipoVivienda $tipoVivienda)
+    public function edit(Prototipo $prototipo)
     {
         //
     }
@@ -64,11 +68,11 @@ class TipoViviendaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTipoViviendaRequest  $request
-     * @param  \App\Models\TipoVivienda  $tipoVivienda
+     * @param  \App\Http\Requests\UpdatePrototipoRequest  $request
+     * @param  \App\Models\Prototipo  $prototipo
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTipoViviendaRequest $request, TipoVivienda $tipoVivienda)
+    public function update(UpdatePrototipoRequest $request, Prototipo $prototipo)
     {
         //
     }
@@ -76,10 +80,10 @@ class TipoViviendaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TipoVivienda  $tipoVivienda
+     * @param  \App\Models\Prototipo  $prototipo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoVivienda $tipoVivienda)
+    public function destroy(Prototipo $prototipo)
     {
         //
     }

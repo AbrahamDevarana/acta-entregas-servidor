@@ -71,14 +71,14 @@ class ViviendaSeeder extends Seeder
                    'piso' => $i,
                    'numero' => $i.'0'.$j,
                    'folio' => 'A-'.$i.'0'.$j,
-                   'tipo_vivienda_id' => $tipoDpto
+                   'prototipo_id' => $tipoDpto
                 ]);            
                               
                 
                 switch ($tipoDpto) {
                     case 1:
                         $arr = [];
-                        $res = DB::table('seccion_tipo_vivienda')->where('tipo_vivienda_id', $tipoDpto)->select('seccion_id')->get();
+                        $res = DB::table('seccion_prototipo')->where('prototipo_id', $tipoDpto)->select('seccion_id')->get();
                         foreach ($res as $valor) {
                             array_push($arr, $valor->seccion_id);
                         }
@@ -86,7 +86,7 @@ class ViviendaSeeder extends Seeder
                     break;
                     case 2:
                         $arr = [];
-                        $res = DB::table('seccion_tipo_vivienda')->where('tipo_vivienda_id', $tipoDpto)->select('seccion_id')->get();
+                        $res = DB::table('seccion_prototipo')->where('prototipo_id', $tipoDpto)->select('seccion_id')->get();
                         foreach ($res as $valor) {
                             array_push($arr, $valor->seccion_id);
                         }
@@ -94,7 +94,7 @@ class ViviendaSeeder extends Seeder
                     break;
                     case 3:
                         $arr = [];
-                        $res = DB::table('seccion_tipo_vivienda')->where('tipo_vivienda_id', $tipoDpto)->select('seccion_id')->get();
+                        $res = DB::table('seccion_prototipo')->where('prototipo_id', $tipoDpto)->select('seccion_id')->get();
                         foreach ($res as $valor) {
                             array_push($arr, $valor->seccion_id);
                         }
@@ -102,7 +102,7 @@ class ViviendaSeeder extends Seeder
                     break;
                     case 4:
                         $arr = [];
-                        $res = DB::table('seccion_tipo_vivienda')->where('tipo_vivienda_id', $tipoDpto)->select('seccion_id')->get();
+                        $res = DB::table('seccion_prototipo')->where('prototipo_id', $tipoDpto)->select('seccion_id')->get();
                         foreach ($res as $valor) {
                             array_push($arr, $valor->seccion_id);
                         }

@@ -15,8 +15,8 @@ class ViviendaController extends Controller
     {
         $viviendas = DB::table('viviendas')
                         ->leftJoin('users', 'users.id' , '=', 'viviendas.cliente_id')
-                        ->leftJoin('tipo_viviendas', 'tipo_viviendas.id', '=', 'viviendas.tipo_vivienda_id')
-                        ->select('viviendas.*', 'users.name as cliente', 'tipo_viviendas.nombre as tipoVivienda', 'tipo_viviendas.tipo', 
+                        ->leftJoin('prototipos', 'prototipos.id', '=', 'viviendas.prototipo_id')
+                        ->select('viviendas.*', 'users.name as cliente', 'prototipos.nombre as tipoVivienda', 'prototipos.tipo', 
                                  'viviendas.fechaEntrega as date', DB::raw("CONCAT( 'Vivienda ', folio ) as title"), 
                                  DB::raw("CONCAT( 'red' ) as color", 'viviendas.fechaPreEntrega as date', DB::raw("CONCAT( 'blue' ) as color")))
                         // ->select('viviendas.fechaEntrega as date', DB::raw("CONCAT( 'Vivienda ', folio ) as title"))

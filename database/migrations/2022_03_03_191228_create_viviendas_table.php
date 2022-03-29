@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('fechaEntregado')->nullable();
             $table->date('fechaPreEntrega')->nullable();
             $table->foreignId('cliente_id')->default(0)->constrained();
-            $table->foreignId('tipo_vivienda_id')->default(0)->constrained();
+            $table->foreignId('prototipo_id')->default(0)->constrained();
             $table->foreignId('status_id')->default(0);
             $table->boolean('eliminado')->default(0);
             $table->timestamps();

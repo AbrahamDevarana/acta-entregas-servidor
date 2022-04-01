@@ -12,6 +12,6 @@ class Etapa extends Model
     protected $fillable = [ 'descripcion', 'desarrollo_id' ];
 
     public function prototipos(){
-        return $this->hasMany(Prototipo::class);
+        return $this->belongsToMany(Prototipo::class, 'pivot_etapa_prototipo', 'etapa_id', 'prototipo_id')->withTimestamps();
     }
 }

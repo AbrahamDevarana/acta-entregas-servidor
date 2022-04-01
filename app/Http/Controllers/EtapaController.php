@@ -6,6 +6,7 @@ use App\Models\Etapa;
 use App\Http\Requests\StoreEtapaRequest;
 use App\Http\Requests\UpdateEtapaRequest;
 use App\Models\Desarrollo;
+use Illuminate\Http\Request;
 
 class EtapaController extends Controller
 {
@@ -42,5 +43,16 @@ class EtapaController extends Controller
     public function destroy(Etapa $etapa)
     {
         //
+    }
+
+    public function upgrade(Etapa $etapa, Request $request)
+    {
+        $arrPrototipos = $request->all();
+        $etapa->prototipos()->sync($arrPrototipos);
+        $etapa = Etapa::with('prototipos')->findOrFail($etapa->id);
+
+        return response()->json([
+            'etapa' => $etapa
+        ]);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class StoreTipoViviendaRequest extends FormRequest
+class StorePrototipoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,13 @@ class StoreTipoViviendaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombre' => 'required',
         ];
     }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
+    }
+
 }

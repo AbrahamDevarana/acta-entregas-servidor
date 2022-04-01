@@ -38,14 +38,9 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::get('verFoto/{usuario?}', [UserController::class, 'verFoto']);
-
 Route::get('verDesarrollo/{desarrollo?}', [DesarrollosController::class, 'verDesarrollo']);
-
-
 Route::get('picture/{file?}', [GaleriaController::class, 'getPicture']);
-Route::resource('etapa', EtapaController::class)->only([
-    'show'
-]);
+Route::get('obtenerPlano/{prototipo?}', [PrototipoController::class, 'obtenerPlano']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -74,11 +69,17 @@ Route::middleware(['auth:sanctum'])->group(function () {
         'index', 'store', 'update', 'destroy', 'edit'
     ]);
   
+    Route::post('prototipo/plano/{prototipo?}', [PrototipoController::class, 'subirPlano']);
     Route::resource('prototipo', PrototipoController::class)->only([
         'index', 'store', 'update', 'destroy', 'edit'
     ]);
-
   
+    Route::post('etapa/{etapa}/upgrade', [EtapaController::class, 'upgrade']);
+    Route::resource('etapa', EtapaController::class)->only([
+        'show', 'store', 'edit', 'update', 'destroy'
+    ]);
+
+
     Route::get('/vivienda-seccion/{id}', [ViviendaController::class, 'obtenerSecciones']);
 
 });

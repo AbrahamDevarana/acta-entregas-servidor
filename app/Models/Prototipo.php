@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Prototipo extends Model
 {
     use HasFactory;
-    protected $fillable = [ 'descripcion', 'nombre', 'etapa_id' ];
+    protected $fillable = [ 'descripcion', 'nombre' ];
 
     public function viviendas(){
         $this->hasMany(Vivienda::class);
@@ -19,6 +19,6 @@ class Prototipo extends Model
     }
 
     public function etapa(){
-        return $this->belongsTo(Etapa::class);
+        return $this->belongsToMany(Etapa::class, 'pivot_etapa_prototipo', 'prototipo_id', 'etapa_id')->withTimestamps();
     }
 }

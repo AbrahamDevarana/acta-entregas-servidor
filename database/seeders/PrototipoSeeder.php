@@ -20,8 +20,7 @@ class PrototipoSeeder extends Seeder
         foreach ($arrDptos as $dpto) {
             $tipoDpto = Prototipo::create([
                 "nombre" => $dpto,
-                'descripcion' => 'Tipo',
-                "etapa_id" => 1
+                'descripcion' => 'Departamento'
             ]);
 
             switch ($tipoDpto->id) {

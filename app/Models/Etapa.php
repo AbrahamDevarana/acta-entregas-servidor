@@ -14,4 +14,8 @@ class Etapa extends Model
     public function prototipos(){
         return $this->belongsToMany(Prototipo::class, 'pivot_etapa_prototipo', 'etapa_id', 'prototipo_id')->withTimestamps();
     }
+
+    public function desarrollo(){
+        return $this->belongsTo(Desarrollo::class);
+    }
 }

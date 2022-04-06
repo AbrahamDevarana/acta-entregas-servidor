@@ -11,7 +11,14 @@ class ListadoController extends Controller
 
     public function index()
     {
-        $listado = Listado::where('eliminado', 0)->get();
+        $listado = Listado::where('eliminado', 0)->with('desarrollo')->get();
+        return response()->json([
+            'listado' => $listado
+        ]);
+    }
+
+    public function show($id){
+        $listado = Listado::where('eliminado', 0)->with('desarrollo')->where('desarrollo_id', $id)->get();
         return response()->json([
             'listado' => $listado
         ]);
@@ -22,7 +29,8 @@ class ListadoController extends Controller
         $request->validated();
         $listado = Listado::create([
             "descripcion" => $request["descripcion"],
-            "tipoListado" => $request["tipoListado"]
+            "tipoListado" => $request["tipoListado"],
+            "desarrollo_id" => $request["desarrollo_id"]
         ]);
         return response()->json([
             'listado' => $listado
@@ -40,6 +48,7 @@ class ListadoController extends Controller
         $request->validated();
         $listado->descripcion = $request['descripcion'];
         $listado->tipoListado = $request['tipoListado'];
+        $listado->desarrollo_id = $request['desarrollo_id'];
         $listado->save();
         return response()->json([
             'listado' => $listado

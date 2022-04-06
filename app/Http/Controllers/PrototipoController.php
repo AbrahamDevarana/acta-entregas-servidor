@@ -18,7 +18,15 @@ class PrototipoController extends Controller
      */
     public function index()
     {
-        $prototipo = Prototipo::all();
+        $prototipo = Prototipo::with('desarrollo')->get();
+
+        return response()->json([
+            'prototipo' => $prototipo
+        ]);
+    }
+
+    public function show( $id ){
+        $prototipo = Prototipo::where('desarrollo_id', $id)->get();
 
         return response()->json([
             'prototipo' => $prototipo
@@ -30,8 +38,9 @@ class PrototipoController extends Controller
         $request->validated();
         $prototipo = Prototipo::create([
             'nombre' => $request['nombre'],
+            'desarrollo_id' => $request['desarrollo_id'],
             'descripcion' => 'Departamento',
-            'tipo' => 1            
+            'tipo' => 1,
         ]);
 
         return response()->json([
@@ -42,6 +51,8 @@ class PrototipoController extends Controller
 
     public function edit(Prototipo $prototipo)
     {
+
+        $prototipo = Prototipo::with('secciones')->findOrFail($prototipo->id);
         return response()->json([
             'prototipo' => $prototipo
         ]);
@@ -53,7 +64,10 @@ class PrototipoController extends Controller
 
         $prototipo->update([
             'nombre' => $request['nombre'],
+            'desarrollo_id' => $request['desarrollo_id']
         ]);
+
+        $prototipo->secciones()->sync($request['plano']);
 
         return response()->json([
             'prototipo' => $prototipo
@@ -88,4 +102,6 @@ class PrototipoController extends Controller
         
         return response()->file(public_path()."/img/imageNotFound.png");
     }
+
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Seccion;
 use App\Http\Requests\StoreSeccionRequest;
 use App\Http\Requests\UpdateSeccionRequest;
+use Illuminate\Http\Request;
 
 class SeccionController extends Controller
 {
@@ -15,8 +16,14 @@ class SeccionController extends Controller
      */
     public function index()
     {       
-         $seccion = Seccion::with('listado')->where('eliminado', 0)->get();
+        $seccion = Seccion::with('listado')->with('desarrollo')->where('eliminado', 0)->get();
+        return response()->json([
+            'seccion' => $seccion
+        ]);
+    }
 
+    public function show($id){
+        $seccion = Seccion::with('listado')->with('desarrollo')->where('eliminado', 0)->where('desarrollo_id', $id)->get();
         return response()->json([
             'seccion' => $seccion
         ]);
@@ -27,6 +34,7 @@ class SeccionController extends Controller
         $request->validated();
         $seccion = new Seccion();
         $seccion->descripcion = $request["descripcion"];
+        $seccion->desarrollo_id = $request["desarrollo_id"];
         $seccion->save();
         $seccion->listado()->sync($request["lista"]);
 
@@ -48,6 +56,7 @@ class SeccionController extends Controller
     {
         $request->validated();
         $seccion->descripcion = $request['descripcion'];
+        $seccion->desarrollo_id = $request["desarrollo_id"];
         $seccion->listado()->sync($request["lista"]);
         $seccion->save();
         return response()->json([

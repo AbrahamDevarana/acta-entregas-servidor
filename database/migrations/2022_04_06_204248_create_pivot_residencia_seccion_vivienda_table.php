@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vivienda_seccion', function (Blueprint $table) {
+        Schema::create('pivot_residencia_seccion_vivienda', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('vivienda_id')->constrained();
-            $table->foreignId('seccion_id')->constrained();
+            $table->foreignId('listado_id');
+            $table->foreignId('seccion_id');
+            $table->foreignId('residencia_id');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vivienda_seccion');
+        Schema::dropIfExists('pivot_residencia_seccion_vivienda');
     }
 };

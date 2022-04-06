@@ -27,8 +27,9 @@ class StoreListadoRequest extends FormRequest
     public function rules()
     {
         return [
-           "descripcion" => "required",
-           "tipoListado" => "required"
+            "descripcion" => "required",
+            "tipoListado" => "required",
+            "desarrollo_id" => "required|exists:desarrollos,id" 
         ];
     }
 

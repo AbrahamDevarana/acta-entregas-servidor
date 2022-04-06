@@ -47,7 +47,8 @@ class SeccionSeeder extends Seeder
 
         foreach ($arrSeccion as $seccion) {
             $seccion = Seccion::create([
-                "descripcion" => $seccion
+                "descripcion" => $seccion,
+                "desarrollo_id" => 1
             ]);
 
             $arrListado = [];
@@ -81,6 +82,11 @@ class SeccionSeeder extends Seeder
             }
             $seccion->listado()->sync($arrListado);
         }
+
+        $seccion = Seccion::create([
+            "descripcion" => "Prueba",
+            "desarrollo_id" => 2
+        ]);
         
  
     }

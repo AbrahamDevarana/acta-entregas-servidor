@@ -47,7 +47,8 @@ class ListadoSeeder extends Seeder
         foreach ($lista as $value) {
             Listado::create([
                 "descripcion" => $value,
-                "tipoListado" => 1
+                "tipoListado" => 1,
+                "desarrollo_id" => 1
             ]);
         }
 

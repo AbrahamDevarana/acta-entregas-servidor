@@ -15,7 +15,7 @@ class DesarrollosSeeder extends Seeder
      */
     public function run()
     {
-        $arrDesarrollos = ["Royal View"];
+        $arrDesarrollos = ["Royal View", "High Gardens"];
 
         foreach ($arrDesarrollos as $desarrollo) {
             Desarrollo::create([

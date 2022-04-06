@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
            PrototipoSeeder::class,
            ListadoSeeder::class,
            SeccionSeeder::class,
-           ViviendaSeeder::class,
+           ResidenciaSeeder::class,
            DesarrollosSeeder::class,
            EtapaSeeder::class
        ]);

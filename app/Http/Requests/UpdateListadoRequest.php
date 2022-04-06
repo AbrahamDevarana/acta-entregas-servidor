@@ -28,7 +28,8 @@ class UpdateListadoRequest extends FormRequest
     {
         return [
             "descripcion" => "required",
-            "tipoListado" => "required"
+            "tipoListado" => "required",
+            "desarrollo_id" => "required|exists:desarrollos,id"
          ];
     }
 

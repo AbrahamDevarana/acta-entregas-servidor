@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class APIController extends Controller
 {
-    public function viviendaCalendar(){
-        $viviendasEntrega = DB::table('viviendas')
-                        ->leftJoin('tipo_viviendas', 'tipo_viviendas.id', '=', 'viviendas.tipo_vivienda_id')
-                        ->select('tipo_viviendas.nombre as tipoDepartamento', 'viviendas.fechaEntrega as date')
+    public function residenciaCalendar(){
+        $residenciasEntrega = DB::table('residencias')
+                        ->leftJoin('tipo_residencias', 'tipo_residencias.id', '=', 'residencias.tipo_residencia_id')
+                        ->select('tipo_residencias.nombre as tipoDepartamento', 'residencias.fechaEntrega as date')
                         ->get();
 
 
-        $viviendasPreentrega = DB::table('viviendas')
-        ->leftJoin('tipo_viviendas', 'tipo_viviendas.id', '=', 'viviendas.tipo_vivienda_id')
-        ->select('tipo_viviendas.nombre as tipoDepartamento', 'viviendas.fechaPreEntrega as date' )
+        $residenciasPreentrega = DB::table('residencias')
+        ->leftJoin('tipo_residencias', 'tipo_residencias.id', '=', 'residencias.tipo_residencia_id')
+        ->select('tipo_residencias.nombre as tipoDepartamento', 'residencias.fechaPreEntrega as date' )
         ->get();
 
 
@@ -24,8 +24,8 @@ class APIController extends Controller
 
 
         return response()->json([
-            'viviendasEntrega' => $viviendasEntrega,
-            'viviendasPreentrega' => $viviendasPreentrega
+            'residenciasEntrega' => $residenciasEntrega,
+            'residenciasPreentrega' => $residenciasPreentrega
         ]);
     }
 }

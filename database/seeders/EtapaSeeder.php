@@ -24,5 +24,14 @@ class EtapaSeeder extends Seeder
             ]);
         }
 
+        Etapa::create([
+            "descripcion" => "Etapa 1",
+            "desarrollo_id" => 2
+        ]);
+        Etapa::create([
+            "descripcion" => "Etapa 2",
+            "desarrollo_id" => 2
+        ]);
+
     }
 }

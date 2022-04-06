@@ -26,7 +26,7 @@ class EtapaController extends Controller
     public function show(Etapa $etapa)
     {
         
-        $etapa = Etapa::with('prototipos')->findOrFail($etapa->id);
+        $etapa = Etapa::with('prototipos')->with('desarrollo')->findOrFail($etapa->id);
         return response()->json([
             'etapa' => $etapa
         ]);
@@ -54,5 +54,16 @@ class EtapaController extends Controller
         return response()->json([
             'etapa' => $etapa
         ]);
+    }
+
+
+    public function asignarRelacion(Etapa $etapa, Request $request){
+        $etapa->prototipos()->sync($request['prototipoNuevo']);
+
+        $etapa = Etapa::with('prototipos')->findOrFail($etapa->id);
+        
+        return response()->json([
+            'etapa' => $etapa
+        ], 200);
     }
 }

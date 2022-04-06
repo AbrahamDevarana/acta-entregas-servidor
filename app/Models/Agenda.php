@@ -11,14 +11,14 @@ class Agenda extends Model
     protected $fillable = [
         'descripcion',
         'tipo_agenda', // Entrega == 1, PreEntrega == 2
-        'vivienda_id',
+        'residencia_id',
         'fecha',
         'eliminado'
     ];
 
 
-    public function viviendas()
+    public function residencias()
     {   
-        return $this->belongsTo(Departamento::class , 'vivienda_id');
+        return $this->belongsTo(Departamento::class , 'residencia_id');
     }
 }

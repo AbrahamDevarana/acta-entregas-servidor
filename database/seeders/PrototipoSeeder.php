@@ -20,7 +20,8 @@ class PrototipoSeeder extends Seeder
         foreach ($arrDptos as $dpto) {
             $tipoDpto = Prototipo::create([
                 "nombre" => $dpto,
-                'descripcion' => 'Departamento'
+                'descripcion' => 'Departamento',
+                "desarrollo_id" => 1
             ]);
 
             switch ($tipoDpto->id) {
@@ -38,8 +39,14 @@ class PrototipoSeeder extends Seeder
                 break;            
             }
 
-            $tipoDpto->secciones()->sync($arr);
+            // $tipoDpto->secciones()->sync($arr);
 
         }
+
+        $tipoDpto = Prototipo::create([
+            "nombre" => "Delux",
+            'descripcion' => 'Departamento',
+            "desarrollo_id" => 2
+        ]);
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('descripcion');
             $table->string('tipoListado');
+            $table->foreignId('desarrollo_id')->constrained();
             $table->boolean('eliminado')->default(0);
             $table->timestamps();
         });

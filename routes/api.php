@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ViviendaController;
+use App\Http\Controllers\ResidenciaController;
 use App\Http\Controllers\DesarrollosController;
 use App\Http\Controllers\EtapaController;
 use App\Http\Controllers\FotoController;
@@ -50,16 +50,17 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('listado', ListadoController::class)->only([
         'index', 'store', 'update', 'destroy', 'edit'
     ]);
+    
     Route::resource('seccion', SeccionController::class)->only([
-        'index', 'store', 'update', 'destroy', 'edit'
+        'index', 'store', 'update', 'destroy', 'edit', 'show'
     ]);
     Route::resource('usuarios', UserController::class)->only([
         'index', 'store', 'update', 'destroy', 'edit'
     ]);
     Route::post('fotoPerfil/{usuario}', [UserController::class, 'fotoPerfil']);
     
-    Route::resource('vivienda', ViviendaController::class)->only([
-        'index', 'update', 'destroy', 'edit'
+    Route::resource('residencia', ResidenciaController::class)->parameters(['residencium' => 'residencia'])->only([
+        'index', 'update', 'destroy', 'edit',
     ]);
     Route::resource('agenda', AgendaController::class)->only([
         'index', 'store', 'update', 'destroy', 'edit'
@@ -71,15 +72,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
   
     Route::post('prototipo/plano/{prototipo?}', [PrototipoController::class, 'subirPlano']);
     Route::resource('prototipo', PrototipoController::class)->only([
-        'index', 'store', 'update', 'destroy', 'edit'
+        'index', 'store', 'update', 'destroy', 'edit', 'show'
     ]);
-  
+    
+    Route::post('etapa/relacion/{etapa}', [EtapaController::class, 'asignarRelacion']);
     Route::post('etapa/{etapa}/upgrade', [EtapaController::class, 'upgrade']);
     Route::resource('etapa', EtapaController::class)->only([
         'show', 'store', 'edit', 'update', 'destroy'
     ]);
 
 
-    Route::get('/vivienda-seccion/{id}', [ViviendaController::class, 'obtenerSecciones']);
+    Route::get('/residencia-seccion/{id}', [ResidenciaController::class, 'obtenerSecciones']);
 
 });

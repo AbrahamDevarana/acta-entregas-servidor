@@ -27,7 +27,8 @@ class UpdateSeccionRequest extends FormRequest
     public function rules()
     {
         return [
-            "descripcion" => "required"
+            "descripcion" => "required",
+            "desarrollo_id" => "required|exists:desarrollos,id"
         ];
     }
 

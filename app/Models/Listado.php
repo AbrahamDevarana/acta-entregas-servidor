@@ -12,6 +12,7 @@ class Listado extends Model
     protected $fillable = [
         'descripcion',
         'tipoListado',
+        'desarrollo_id'
     ];
 
     public function viviendas(){
@@ -20,5 +21,9 @@ class Listado extends Model
 
     public function seccion(){
         return $this->belongsToMany(Seccion::class, 'listado_seccion', 'listado_id', 'seccion_id');
+    }
+
+    public function desarrollo(){
+        return $this->belongsTo(Desarrollo::class);
     }
 }

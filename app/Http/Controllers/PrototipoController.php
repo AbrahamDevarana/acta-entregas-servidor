@@ -52,7 +52,7 @@ class PrototipoController extends Controller
     public function edit(Prototipo $prototipo)
     {
 
-        $prototipo = Prototipo::with('secciones')->findOrFail($prototipo->id);
+        $prototipo = Prototipo::with('zonas')->with('desarrollo')->findOrFail($prototipo->id);
         return response()->json([
             'prototipo' => $prototipo
         ]);
@@ -64,10 +64,9 @@ class PrototipoController extends Controller
 
         $prototipo->update([
             'nombre' => $request['nombre'],
-            'desarrollo_id' => $request['desarrollo_id']
         ]);
 
-        $prototipo->secciones()->sync($request['plano']);
+        $prototipo->zonas()->sync($request['plano']);
 
         return response()->json([
             'prototipo' => $prototipo
@@ -103,5 +102,14 @@ class PrototipoController extends Controller
         return response()->file(public_path()."/img/imageNotFound.png");
     }
 
+    public function asignarRelacion(Prototipo $prototipo, Request $request){
+        $prototipo->desarrollo()->sync($request['desarrolloNuevo']);
+
+        $prototipo = Prototipo::with('desarrollo')->findOrFail($prototipo->id);
+        
+        return response()->json([
+            'prototipo' => $prototipo
+        ], 200);
+    }
 
 }

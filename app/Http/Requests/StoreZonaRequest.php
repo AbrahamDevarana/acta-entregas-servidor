@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class StoreSeccionRequest extends FormRequest
+class StoreZonaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

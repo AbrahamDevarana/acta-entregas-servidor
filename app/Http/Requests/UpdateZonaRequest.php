@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class UpdateSeccionRequest extends FormRequest
+class UpdateZonaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

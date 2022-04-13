@@ -5,14 +5,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResidenciaController;
 use App\Http\Controllers\DesarrollosController;
 use App\Http\Controllers\EtapaController;
-use App\Http\Controllers\FotoController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ListadoController;
 use App\Http\Controllers\PrototipoController;
-use App\Http\Controllers\SeccionController;
+use App\Http\Controllers\ZonaController;
 use App\Http\Controllers\UserController;
-use App\Models\Desarrollo;
-use App\Models\Etapa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,7 +48,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         'index', 'store', 'update', 'destroy', 'edit'
     ]);
     
-    Route::resource('seccion', SeccionController::class)->only([
+    Route::resource('zona', ZonaController::class)->only([
         'index', 'store', 'update', 'destroy', 'edit', 'show'
     ]);
     Route::resource('usuarios', UserController::class)->only([
@@ -69,7 +66,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('desarrollo', DesarrollosController::class)->only([
         'index', 'store', 'update', 'destroy', 'edit'
     ]);
-  
+
+    Route::post('prototipo/relacion/{prototipo}', [PrototipoController::class, 'asignarRelacion']);
     Route::post('prototipo/plano/{prototipo?}', [PrototipoController::class, 'subirPlano']);
     Route::resource('prototipo', PrototipoController::class)->only([
         'index', 'store', 'update', 'destroy', 'edit', 'show'

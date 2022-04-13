@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Seccion;
+use App\Models\Zona;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SeccionSeeder extends Seeder
+class ZonaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class SeccionSeeder extends Seeder
      */
     public function run()
     {
-        $arrSeccion = [
+        $arrZona = [
             'Vestíbulo Elite',
             'Vestíbulo + Sala Tv',
 
@@ -45,8 +45,8 @@ class SeccionSeeder extends Seeder
         ];
 
 
-        foreach ($arrSeccion as $seccion) {
-            $seccion = Seccion::create([
+        foreach ($arrZona as $seccion) {
+            $seccion = Zona::create([
                 "descripcion" => $seccion,
                 "desarrollo_id" => 1
             ]);
@@ -83,7 +83,7 @@ class SeccionSeeder extends Seeder
             $seccion->listado()->sync($arrListado);
         }
 
-        $seccion = Seccion::create([
+        $seccion = Zona::create([
             "descripcion" => "Prueba",
             "desarrollo_id" => 2
         ]);

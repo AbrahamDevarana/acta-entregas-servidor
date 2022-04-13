@@ -14,8 +14,8 @@ class Prototipo extends Model
         $this->hasMany(Vivienda::class);
     }
 
-    public function secciones(){
-        return $this->belongsToMany(Seccion::class, 'seccion_prototipo', 'prototipo_id', 'seccion_id')->withTimestamps();
+    public function zonas(){
+        return $this->belongsToMany(Zona::class, 'pivot_prototipo_zona', 'prototipo_id', 'zona_id')->withTimestamps();
     }
 
     public function etapa(){
@@ -23,6 +23,6 @@ class Prototipo extends Model
     }
 
     public function desarrollo(){
-        return $this->belongsTo(Desarrollo::class);
+        return $this->belongsToMany(Desarrollo::class, 'pivot_desarrollo_prototipo', 'prototipo_id', 'desarrollo_id')->withTimestamps();
     }
 }

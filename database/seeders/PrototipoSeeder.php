@@ -21,7 +21,6 @@ class PrototipoSeeder extends Seeder
             $tipoDpto = Prototipo::create([
                 "nombre" => $dpto,
                 'descripcion' => 'Departamento',
-                "desarrollo_id" => 1
             ]);
 
             switch ($tipoDpto->id) {
@@ -51,8 +50,7 @@ class PrototipoSeeder extends Seeder
 
         $tipoDpto = Prototipo::create([
             "nombre" => "Delux",
-            'descripcion' => 'Departamento',
-            "desarrollo_id" => 2
+            'descripcion' => 'Departamento'
         ]);
     }
 }

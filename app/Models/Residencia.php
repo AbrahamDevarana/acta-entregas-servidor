@@ -30,11 +30,11 @@ class Residencia extends Model
     }
 
     public function listadoMany(){
-        return $this->belongsToMany(Listado::class, 'pivot_residencia_seccion_vivienda')->withTimestamps()->withPivot('seccion_id');
+        return $this->belongsToMany(Listado::class, 'pivot_residencia_vivienda_zona')->withTimestamps()->withPivot('seccion_id');
     }
 
     public function seccionMany(){
-        return $this->belongsToMany(Seccion::class, 'pivot_residencia_seccion_vivienda')->withTimestamps()->withPivot('listado_id');
+        return $this->belongsToMany(Seccion::class, 'pivot_residencia_vivienda_zona')->withTimestamps()->withPivot('listado_id');
     }
 }
 

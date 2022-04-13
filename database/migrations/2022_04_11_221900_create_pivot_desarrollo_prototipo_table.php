@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('seccions', function (Blueprint $table) {
+        Schema::create('pivot_desarrollo_prototipo', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
-            $table->foreignId('desarrollo_id')->constrained();
-            $table->boolean('eliminado')->default(0);
+            $table->string('desarrollo_id');
+            $table->string('prototipo_id');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seccions');
+        Schema::dropIfExists('pivot_desarrollo_prototipo');
     }
 };

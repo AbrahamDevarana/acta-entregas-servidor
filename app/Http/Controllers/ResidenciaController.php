@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Residencia;
 use App\Http\Requests\StoreResidenciaRequest;
 use App\Http\Requests\UpdateResidenciaRequest;
-use App\Models\Seccion;
 use Illuminate\Support\Facades\DB;
 
 class ResidenciaController extends Controller
@@ -28,7 +27,7 @@ class ResidenciaController extends Controller
 
     public function edit(Residencia $residencium){
 
-        $residencium = Residencia::with('prototipo.secciones')->with('listadoMany')->findOrFail($residencium->id);
+        $residencium = Residencia::with('prototipo.zonas')->with('listadoMany')->findOrFail($residencium->id);
         return response()->json([
             'residencia' => $residencium,
             // 'listado' => $listado
@@ -54,7 +53,7 @@ class ResidenciaController extends Controller
             }
         }
 
-        $residencium = Residencia::with('prototipo.secciones')->with('listadoMany')->findOrFail($residencium->id);
+        $residencium = Residencia::with('prototipo.zonas')->with('listadoMany')->findOrFail($residencium->id);
 
         return response()->json([
             'residencia' => $residencium

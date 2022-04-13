@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
            UserSeeder::class,
            PrototipoSeeder::class,
            ListadoSeeder::class,
-           SeccionSeeder::class,
+           ZonaSeeder::class,
            ResidenciaSeeder::class,
            DesarrollosSeeder::class,
            EtapaSeeder::class
